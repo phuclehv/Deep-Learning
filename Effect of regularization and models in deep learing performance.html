@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>Effect of hyperparameter tuning and choice of model in deep learning's performance</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Effect of regularization and models in deep learing performance</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11786,7 +11786,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 style="text-align: center;" markdown="2">Abstract</h2><p>The performance of an deep learning algorithm depends on how well the researchers choose the model, tune the hyper parameter, and apply regulization method to fit with the dataset. In this paper, I will only focus on the use of regulization method and the choice of model. In the first part,I will demonstrate the effect of applying regulization by using normal regularization and drop-out into normal deep learning algorithm. In the second part, I will compare the performance of 3 models : Batch Gradient Descent(BGD), Stochastic Gradient Descent(SGD),and Mini-Batch Gradident Descent(MBGD). Momentum and RMSprob will be in turn added to MBGD, which will significantly increase the accuracy of the program.</p>
+<h2 style="text-align: center;" markdown="2">Abstract</h2><p>The performance of an deep learning algorithm depends on how well the researchers choose the model, tune the hyper parameter, and apply regulization method to fit with the dataset. In this paper, we will only focus on the use of regulization method and the choice of model. In the first part,we will demonstrate the effect of applying regulization by using normal regularization and drop-out into normal deep learning algorithm. In the second part, we will compare the performance of 3 models : Batch Gradient Descent(BGD), Stochastic Gradient Descent(SGD),and Mini-Batch Gradident Descent(MBGD). Momentum and RMSprob will be in turn added to MBGD, which will significantly increase the accuracy of the program.</p>
 
 </div>
 </div>
@@ -11795,7 +11795,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="1.-Introduction">1. Introduction<a class="anchor-link" href="#1.-Introduction">&#182;</a></h2><p>The rise of interest about neural networks in both academia and public environment starts with a breakthrough in 2006, when Geoffrey Hinton published a well-recieved paper showing the effifency of an algorithm called "greedy layer-wise" pretraining <em>(Hinton et al.,2006)</em>. Another breakthrough come in the ImageNet competition, when Alex Krizhevsky, Ilya Sutskever,and Geoffrey Hinton achieved significant improvement in accuracy using Deep Convolutional Convolutional Networks <em>(Krizhevsky et al., 2012)</em>. The impressive performance of those algorithms compared to tradditional machine learning methods had not only attracted intention among researchers, but also in popular culture, under the term "deep learning". However, despite being a powerful tool, applying deep learning is an iterative process and cannot be generalized easily, as researchers have to find suitable hyperparameters and models for each dataset given. In the first part, by applying</p>
+<h2 id="1.-Introduction">1. Introduction<a class="anchor-link" href="#1.-Introduction">&#182;</a></h2><p>The rise of interest about neural networks in both academia and public environment starts with a breakthrough in 2006, when Geoffrey Hinton published a well-recieved paper showing the effifency of an algorithm called "greedy layer-wise" pretraining <em>(Hinton et al.,2006)</em>. Another breakthrough come in the ImageNet competition, when Alex Krizhevsky, Ilya Sutskever,and Geoffrey Hinton achieved significant improvement in accuracy using Deep Convolutional Convolutional Networks <em>(Krizhevsky et al., 2012)</em>. The impressive performance of those algorithms compared to tradditional machine learning methods had not only attracted intention among researchers, but also in popular culture, under the term "deep learning". However, despite being a powerful tool, applying deep learning is an iterative process and cannot be generalized easily, as researchers have to find suitable hyperparameters and models for each dataset given. In the first part, by applying right regulation methods, we can increase <strong>3.5%</strong> accuracy.</p>
 
 </div>
 </div>
@@ -11805,8 +11805,8 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="2.-Regulization">2. Regulization<a class="anchor-link" href="#2.-Regulization">&#182;</a></h2><p>A big problems of Deep Learning models is overfitting, when the program tries too hard to fit the training set as much as possible, thus reduce the ability to generalize to the examples in dev and test set, which it has never seen. A standard way to avoid that is to apply <em>L2 regularization</em>, which involve modifying the cost function.</p>
-<p>Normal cost function:
-$$J = -\frac{1}{m} \sum\limits_{i = 1}^{m} \large{(}\small  y^{(i)}\log\left(a^{[L](i)}\right) + (1-y^{(i)})\log\left(1- a^{[L](i)}\right) \large{)} \tag{1}$$
+<p>Normal cost function:</p>
+<p>$$J = -\frac{1}{m} \sum\limits_{i = 1}^{m} \large{(}\small  y^{(i)}\log\left(a^{[L](i)}\right) + (1-y^{(i)})\log\left(1- a^{[L](i)}\right) \large{)} \tag{1}$$
 Cost function using regularization:
 $$J_{regularized} = \small \underbrace{-\frac{1}{m} \sum\limits_{i = 1}^{m} \large{(}\small y^{(i)}\log\left(a^{[L](i)}\right) + (1-y^{(i)})\log\left(1- a^{[L](i)}\right) \large{)} }_\text{cross-entropy cost} + \underbrace{\frac{1}{m} \frac{\lambda}{2} \sum\limits_l\sum\limits_k\sum\limits_j W_{k,j}^{[l]2} }_\text{L2 regularization cost} \tag{2}$$</p>
 <p>Drop-out is another technique that is widely used in Deep Learning models to reduce overfitting. The main idea is it will randomly remove some neurons in each iteration.
@@ -13326,7 +13326,7 @@ BoPBYDB04f8HZP58fOXQ8lsAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">train_X</span><span class="p">,</span> <span class="n">train_Y</span><span class="p">,</span> <span class="n">lambd</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span>
@@ -14145,7 +14145,7 @@ YDAYDIYOGKE0GAwGg6EDRigNBoPBYOiAEUqDwWAwGDpghNJgMBgMhg4YoTQYDAaDoQNGKA0Gg8Fg
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Using the same model with regularization, we can achieve 1.5% increase in test set performance. The model now does not try to overfit the training set, but rather accept the loss of few mismatch points in order to increase generalization.
+<p>Using the same model with normal regularization, we can achieve <strong>1.5%</strong> increase in test set performance. The model now does not try to overfit the training set, but rather accept the loss of few mismatch points in order to increase generalization.
 Finally, we will apply try applying to the model with keep_prob = 0.86</p>
 
 </div>
@@ -14997,8 +14997,53 @@ P3+VQnr7/IlXAAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>With dropout, the accuracy of the test set increases another 2% to 95%. Like regularization, the increase in accuracy in the test set come with the price with the decrease in training set.</p>
+<p>With dropout, the accuracy of the test set increases <strong>95%</strong>. Like regularization, the increase in accuracy in the test set come with the price with the decrease in training set.
+<strong>Here are the results of our three models</strong>:</p>
+<table> 
+    <tr>
+        <td>
+        **model**
+        </td>
+        <td>
+        **train accuracy**
+        </td>
+        <td>
+        **test accuracy**
+        </td>
 
+    </tr>
+        <td>
+        3-layer NN without regularization
+        </td>
+        <td>
+        95%
+        </td>
+        <td>
+        91.5%
+        </td>
+    <tr>
+        <td>
+        3-layer NN with L2-regularization
+        </td>
+        <td>
+        94%
+        </td>
+        <td>
+        93%
+        </td>
+    </tr>
+    <tr>
+        <td>
+        3-layer NN with dropout
+        </td>
+        <td>
+        93%
+        </td>
+        <td>
+        95%
+        </td>
+    </tr>
+</table>
 </div>
 </div>
 </div>
